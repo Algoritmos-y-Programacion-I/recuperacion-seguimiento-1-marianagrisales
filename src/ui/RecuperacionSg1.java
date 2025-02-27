@@ -53,15 +53,18 @@ public class RecuperacionSg1 {
         System.out.println("Cual es la tercera ?");
         String palabra33 = escaner.nextLine(); 
 
+        int palabrasLargas = palabraLarga(palabra31, palabra32, palabra33);
+        System.out.println("La cantidad de palabras mas largas que 3 caracteres son de : " + palabrasLargas);
+
         System.out.println("-----------------------------------------------------------------------");
         System.out.println("Ahora harmeos el 4 ejercicio");
         System.out.println("Dame una palabra ?");
-        escaner.nextLine();
         String palabra41 = escaner.nextLine(); 
         System.out.println("Dame otra palabra ?");
         String palabra42 = escaner.nextLine(); 
 
-        System.out.println(letraIgual(palabra41, palabra42));
+        boolean letrasIguales = letraIgual(palabra41, palabra42);
+        System.out.println(letrasIguales);
         
         System.out.println("-----------------------------------------------------------------------");
 
@@ -72,6 +75,12 @@ public class RecuperacionSg1 {
         int b = escaner.nextInt();
         System.out.println("Ingresa valor c:");
         int c = escaner.nextInt();
+
+        double resultraizP = raizP(a,b,c);
+        double resultraizN = raizN(a,b,c);
+        System.out.println("Raiz positiva es : " + resultraizP);
+        System.out.println("Raiz negativa es : " + resultraizN);
+
     }
 
 
@@ -115,18 +124,60 @@ public class RecuperacionSg1 {
     }
 
     // Metodo que cumple el tercer ejercicio
-    
+    public static int palabraLarga(String palabra31, String palabra32, String palabra33){
+        int contador = 0;
+        if(palabra31.length() >=3){
+            contador ++;
+        }
+        if(palabra32.length() >=3){
+            contador++;
+        }
+        
+        if(palabra33.length() >=3){
+            contador++;
+        }
+
+        return contador;
+    }
     // Metodo que cumple el cuarto ejercicio
     public static boolean letraIgual(String palabra41, String palabra42) {
-        if(palabra41.length() >= 2 || palabra42.length() >= 2){
+        if(palabra41.length() < 3 || palabra42.length() < 3){
             System.out.println("Error de cantidad de caracteres");
             return false;
         }
 
-        char charpalabra41 = palabra41.charAt(1);
-        char charpalabra42 = palabra42.charAt(1);
+        if(palabra41.charAt(2) == palabra42.charAt(2)){
+            return true;
+        }
 
-        return charpalabra41 == charpalabra42;
+        return false;
+    }
 
+    // Metodo que cumple el quinto ejercicio
+    
+    public static double raizP(int a, int b, int c){
+        double raiz1;
+        double discriminante = Math.pow(b,2)-4*a*c;
+
+        if (discriminante < 0){
+        System.out.println("La ecuacion no tiene soluciones reales.");
+        }else{
+            return raiz1 = (-b + Math.sqrt(discriminante))/(2*a);
+        }
+         return -1;
+
+    }
+
+    public static double raizN(int a, int b, int c){
+        double raiz2;
+        double discriminante = Math.pow(b,2)-4*a*c;
+
+        if (discriminante < 0){
+            System.out.println("La ecuacion no tiene soluciones reales.");
+    
+        }else{
+                return raiz2 = (-b + Math.sqrt(discriminante))/(2*a);
+        }
+        return -1;
     }
 }
